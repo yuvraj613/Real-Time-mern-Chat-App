@@ -6,6 +6,7 @@ import MessageInput from "./MessageInput";
 import MessageSkeleton from "./skeletons/MessageSkeleton";
 import { useAuthStore } from "../store/useAuthStore";
 import { formatMessageTime } from "../lib/utils";
+import useSidebarStore from "../store/useSidebarStore";
 
 const ChatContainer = () => {
   const {
@@ -18,6 +19,7 @@ const ChatContainer = () => {
   } = useChatStore();
   const { authUser } = useAuthStore();
   const messageEndRef = useRef(null);
+  const { isOpen } = useSidebarStore();
 
   useEffect(() => {
     getMessages(selectedUser._id);
@@ -40,7 +42,11 @@ const ChatContainer = () => {
 
   if (isMessagesLoading) {
     return (
-      <div className="flex-1 flex flex-col overflow-auto">
+      <div
+        className={`flex-1 flex flex-col overflow-auto ${
+          isOpen ? "lg:flex" : "flex"
+        }`}
+      >
         <ChatHeader />
         <MessageSkeleton />
         <MessageInput />
@@ -49,7 +55,11 @@ const ChatContainer = () => {
   }
 
   return (
-    <div className="flex-1 flex flex-col overflow-auto">
+    <div
+      className={`flex-1 flex flex-col overflow-auto ${
+        isOpen ? "hidden lg:flex" : "flex"
+      }`}
+    >
       <ChatHeader />
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">

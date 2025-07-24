@@ -1,15 +1,20 @@
-import { X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
+import useSidebarStore from "../store/useSidebarStore";
 
 const ChatHeader = () => {
   const { selectedUser, setSelectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
+  const { onOpen } = useSidebarStore();
 
   return (
     <div className="p-2.5 border-b border-base-300">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
+          <button onClick={onOpen} className="lg:hidden">
+            <Menu />
+          </button>
           {/* Avatar */}
           <div className="avatar">
             <div className="size-10 rounded-full relative">
