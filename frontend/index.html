@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- CRITICAL: Mobile responsive viewport - prevents zoom and sets proper scaling -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+
+    <!-- Prevent automatic phone number detection -->
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- iOS specific meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Chat App" />
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#007bff" />
+
+    <!-- Prevent text size adjustment on mobile -->
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <title>Chat App</title>
+
+    <!-- Essential mobile CSS reset -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        touch-action: manipulation;
+      }
+
+      #root {
+        height: 100vh;
+        height: 100dvh; /* Dynamic viewport height for mobile */
+        width: 100%;
+        overflow: hidden;
+      }
+
+      /* Prevent pull-to-refresh on mobile */
+      body {
+        overscroll-behavior-y: contain;
+      }
+
+      /* Hide scrollbars on mobile */
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
